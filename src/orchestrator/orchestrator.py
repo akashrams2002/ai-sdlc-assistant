@@ -1,6 +1,7 @@
 from agents.requirements_agent import RequirementsAgent
 from agents.design_agent import DesignAgent
 from agents.task_agent import TaskAgent
+from agents.code_agent import CodeAgent
 
 
 class Orchestrator:
@@ -9,6 +10,7 @@ class Orchestrator:
         self.requirements_agent = RequirementsAgent()
         self.design_agent = DesignAgent()
         self.task_agent = TaskAgent()
+        self.code_agent = CodeAgent()
 
     def execute(self, project_idea):
 
@@ -24,8 +26,13 @@ class Orchestrator:
             design
         )
 
+        code = self.code_agent.generate_code(
+            tasks
+        )
+
         return {
             "requirements": requirements,
             "design": design,
-            "tasks": tasks
+            "tasks": tasks,
+            "code": code
         }

@@ -21,6 +21,10 @@ def main():
     for task in result["tasks"]:
         print("-", task)
 
+    print("\nGenerated Code:\n")
+    for item in result["code"]:
+        print(item)
+        print()
 
 if __name__ == "__main__":
     main()
