@@ -5,12 +5,43 @@ class DesignAgent:
 
     def generate_design(self, requirements):
 
+        project_name = requirements[0]
+
         design = [
-            "User Interface Layer",
-            "Requirements Agent Layer",
-            "Design Agent Layer",
-            "Task Planning Layer",
-            "Code Generation Layer"
+            f"Architecture for: {project_name}"
         ]
+
+        requirements_text = " ".join(requirements).lower()
+
+        if "restaurant" in requirements_text:
+
+            design.extend([
+                "User Interface Layer",
+                "Restaurant Management Module",
+                "Order Processing Module",
+                "Delivery Tracking Module",
+                "Payment Module",
+                "Database Layer"
+            ])
+
+        elif "message" in requirements_text:
+
+            design.extend([
+                "User Interface Layer",
+                "Messaging Module",
+                "Chat Room Module",
+                "Notification Module",
+                "Chat History Module",
+                "Database Layer"
+            ])
+
+        else:
+
+            design.extend([
+                "User Interface Layer",
+                "Business Logic Layer",
+                "Service Layer",
+                "Database Layer"
+            ])
 
         return design

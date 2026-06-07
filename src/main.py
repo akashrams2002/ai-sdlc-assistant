@@ -3,10 +3,14 @@ from orchestrator.orchestrator import Orchestrator
 
 def main():
 
+    project_idea = input(
+        "Enter Project Idea: "
+    )
+
     orchestrator = Orchestrator()
 
     result = orchestrator.execute(
-        "AI SDLC Assistant"
+        project_idea
     )
 
     print("\nGenerated Requirements:\n")
@@ -25,6 +29,7 @@ def main():
     for item in result["code"]:
         print(item)
         print()
+
 
 if __name__ == "__main__":
     main()

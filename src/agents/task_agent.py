@@ -5,12 +5,26 @@ class TaskAgent:
 
     def generate_tasks(self, design):
 
-        tasks = [
-            "Gather requirements",
-            "Create system design",
-            "Implement agents",
+        tasks = []
+
+        architecture_name = design[0]
+
+        tasks.append(
+            f"Review {architecture_name}"
+        )
+
+        for component in design[1:]:
+
+            if "Layer" in component:
+                continue
+
+            tasks.append(
+                f"Implement {component}"
+            )
+
+        tasks.extend([
             "Write unit tests",
             "Deploy application"
-        ]
+        ])
 
         return tasks
