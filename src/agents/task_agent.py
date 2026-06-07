@@ -1,26 +1,39 @@
+from src.models.llm import LLM
+
+
 class TaskAgent:
     """
-    Converts design into development tasks.
+    Converts design into development tasks using AI.
     """
+
+    def __init__(self):
+        self.llm = LLM()
 
     def generate_tasks(self, design):
 
-        tasks = []
+        design_text = "\n".join(design)
 
-        architecture_name = design[0]
+        prompt = f"""
+        Based on this software architecture, generate a list of software development tasks.
 
-        tasks.append(
-            f"Review {architecture_name}"
-        )
+        Architecture:
+        {design_text}
 
-        for component in design[1:]:
+        Return only the tasks as a numbered list.
+        """
 
-            if "Layer" in component:
-                continue
+        response = self.llm.generate(prompt)
 
-            tasks.append(
-                f"Implement {component}"
-            )
+        tasks = [
+            f"Review {design[0]}"
+        ]
+
+        for line in response.split("\n"):
+
+            line = line.strip()
+
+            if line:
+                tasks.append(line)
 
         tasks.extend([
             "Write unit tests",

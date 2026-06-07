@@ -1,50 +1,36 @@
+from src.models.llm import LLM
+
+
 class RequirementsAgent:
     """
-    Converts a project idea into requirements.
+    Converts a project idea into requirements using AI.
     """
 
+    def __init__(self):
+        self.llm = LLM()
+
     def generate_requirements(self, project_idea):
+
+        prompt = f"""
+        Generate 5 software requirements for this project.
+
+        Project Idea:
+        {project_idea}
+
+        Return only the requirements as a numbered list.
+        """
+
+        response = self.llm.generate(prompt)
 
         requirements = [
             f"Project Idea: {project_idea}"
         ]
 
-        project = project_idea.lower()
+        for line in response.split("\n"):
 
-        if "food" in project:
+            line = line.strip()
 
-            requirements.extend([
-                "Users can browse restaurants",
-                "Users can place food orders",
-                "Users can track deliveries",
-                "Restaurant owners can manage menus"
-            ])
-
-        elif "ecommerce" in project or "shopping" in project:
-
-            requirements.extend([
-                "Users can browse products",
-                "Users can add products to cart",
-                "Users can place orders",
-                "Admins can manage inventory"
-            ])
-
-        elif "chat" in project:
-
-            requirements.extend([
-                "Users can send messages",
-                "Users can create chat rooms",
-                "Users can view chat history",
-                "Users receive notifications"
-            ])
-
-        else:
-
-            requirements.extend([
-                "Users can interact with the system",
-                "System processes requests",
-                "System stores data",
-                "Admins can manage the application"
-            ])
+            if line:
+                requirements.append(line)
 
         return requirements

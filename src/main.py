@@ -1,5 +1,4 @@
-from orchestrator.orchestrator import Orchestrator
-
+from src.orchestrator.orchestrator import Orchestrator
 
 def main():
 
