@@ -1,5 +1,16 @@
 from src.orchestrator.orchestrator import Orchestrator
 
+
+def save_to_file(filename, title, items):
+
+    with open(filename, "w", encoding="utf-8") as file:
+
+        file.write(f"# {title}\n\n")
+
+        for item in items:
+            file.write(f"- {item}\n")
+
+
 def main():
 
     project_idea = input(
@@ -28,6 +39,27 @@ def main():
     for item in result["code"]:
         print(item)
         print()
+
+    # Save outputs to files
+    save_to_file(
+        "docs/requirements.md",
+        "Requirements",
+        result["requirements"]
+    )
+
+    save_to_file(
+        "docs/design.md",
+        "Design",
+        result["design"]
+    )
+
+    save_to_file(
+        "docs/tasks.md",
+        "Tasks",
+        result["tasks"]
+    )
+
+    print("\nDocumentation saved to docs folder.")
 
 
 if __name__ == "__main__":

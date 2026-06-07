@@ -1,97 +1,202 @@
 # AI SDLC Assistant
 
-A multi-agent Software Development Life Cycle (SDLC) assistant built using Spec Driven Development, Git, automated testing, and GitHub Actions.
+An AI-powered Software Development Life Cycle (SDLC) Assistant built using Python, Groq, Llama 3, Spec Driven Development, Git, automated testing, and GitHub Actions.
 
-This project demonstrates how requirements, design, task planning, implementation, testing, and CI/CD can be organized into a structured development workflow.
+This project demonstrates how AI agents can collaborate to generate software requirements, system designs, development tasks, and code skeletons from a simple project idea.
 
 ---
 
-## Project Overview
+# Project Overview
 
-AI SDLC Assistant is a learning project that simulates how AI agents can collaborate during software development.
+AI SDLC Assistant simulates how AI can assist throughout the Software Development Life Cycle.
 
-The system follows a structured Software Development Life Cycle (SDLC) and uses dedicated agents for each phase of development.
+The system uses multiple agents that work together to transform a project idea into structured software artifacts.
 
-### Objectives
+Example:
+
+Project Idea:
+Online Food Delivery App
+
+↓
+
+Requirements Generation
+
+↓
+
+Architecture Design Generation
+
+↓
+
+Task Planning Generation
+
+↓
+
+Code Skeleton Generation
+
+↓
+
+Documentation Output
+
+---
+
+# Features
+
+✅ AI Requirements Generation
+
+✅ AI Architecture Design Generation
+
+✅ AI Task Planning
+
+✅ Code Skeleton Generation
+
+✅ Automatic Documentation Generation
+
+✅ GitHub Actions CI/CD
+
+✅ Automated Testing with Pytest
+
+✅ Multi-Agent Architecture
+
+✅ Spec Driven Development Workflow
+
+---
+
+# Objectives
 
 * Demonstrate Spec Driven Development
 * Practice Git branching and version control
 * Implement agent-based architecture
+* Generate requirements using AI
+* Generate system designs using AI
+* Generate development tasks using AI
 * Automate testing using Pytest
 * Automate validation using GitHub Actions
-* Prepare for future LLM integration
 
 ---
 
-## SDLC Workflow
+# SDLC Workflow
 
 Requirements
+
 ↓
+
 Design
+
 ↓
+
 Task Planning
+
 ↓
+
 Implementation
+
 ↓
+
 Testing
+
 ↓
+
 CI/CD
 
-Each phase is tracked through Git commits and can be developed independently using feature branches.
+Each phase is represented by a dedicated agent and can evolve independently.
 
 ---
 
-## System Architecture
+# System Architecture
 
 User
+
 ↓
+
 Orchestrator
+
 ↓
-Requirements Agent
+
+AI Requirements Agent
+
 ↓
-Design Agent
+
+AI Design Agent
+
 ↓
-Task Planning Agent
+
+AI Task Agent
+
 ↓
+
 Code Generation Agent
+
 ↓
-LLM Interface
 
-### Component Responsibilities
-
-#### Requirements Agent
-
-* Collects project requirements
-* Produces requirement specifications
-
-#### Design Agent
-
-* Generates high-level architecture
-* Defines system components
-
-#### Task Planning Agent
-
-* Breaks requirements into implementation tasks
-* Creates development roadmap
-
-#### Code Generation Agent
-
-* Produces starter code structures
-* Generates implementation templates
-
-#### Orchestrator
-
-* Coordinates communication between agents
-* Controls workflow execution
-
-#### LLM Interface
-
-* Provides abstraction layer for future AI model integration
-* Supports future integration with Ollama, Llama, and other LLMs
+Documentation Generator
 
 ---
 
-## Project Structure
+# AI Workflow
+
+Project Idea
+
+↓
+
+Requirements Generation (Groq + Llama 3)
+
+↓
+
+Architecture Design Generation
+
+↓
+
+Task Planning Generation
+
+↓
+
+Code Skeleton Generation
+
+↓
+
+Markdown Documentation Output
+
+---
+
+# Component Responsibilities
+
+## Requirements Agent
+
+* Generates software requirements from project ideas
+* Uses Groq + Llama 3
+* Produces structured requirement lists
+
+## Design Agent
+
+* Generates high-level system architecture
+* Produces modules, services, and components
+* Uses AI-generated requirements as input
+
+## Task Agent
+
+* Converts architecture into implementation tasks
+* Produces development roadmaps
+* Generates realistic SDLC activities
+
+## Code Agent
+
+* Converts implementation tasks into starter code structures
+* Generates Python class skeletons
+
+## Orchestrator
+
+* Coordinates communication between agents
+* Controls end-to-end workflow execution
+
+## LLM Interface
+
+* Provides abstraction layer for AI providers
+* Currently integrated with Groq
+* Can be extended to OpenAI, Gemini, or Ollama
+
+---
+
+# Project Structure
 
 ```text
 ai-sdlc-assistant/
@@ -99,6 +204,11 @@ ai-sdlc-assistant/
 ├── .github/
 │   └── workflows/
 │       └── python-tests.yml
+│
+├── docs/
+│   ├── requirements.md
+│   ├── design.md
+│   └── tasks.md
 │
 ├── specs/
 │   ├── project_vision.md
@@ -123,16 +233,22 @@ ai-sdlc-assistant/
 │
 ├── tests/
 │   ├── test_requirements_agent.py
-│   └── test_design_agent.py
+│   ├── test_design_agent.py
+│   ├── test_task_agent.py
+│   ├── test_code_agent.py
+│   └── test_orchestrator.py
 │
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Technologies Used
+# Technologies Used
 
 * Python 3.12
+* Groq API
+* Llama 3 70B
 * Git
 * GitHub
 * GitHub Actions
@@ -142,7 +258,7 @@ ai-sdlc-assistant/
 
 ---
 
-## Running the Project
+# Running the Project
 
 Clone the repository:
 
@@ -151,114 +267,127 @@ git clone https://github.com/akashrams2002/ai-sdlc-assistant.git
 cd ai-sdlc-assistant
 ```
 
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Configure Groq API Key:
+
+```powershell
+$env:GROQ_API_KEY="your_api_key"
+```
+
 Run the application:
 
 ```bash
-python src/main.py
+python -m src.main
 ```
 
 ---
 
-## Running Tests
+# Generated Documentation
 
-Execute all automated tests:
+Every execution automatically generates:
+
+```text
+docs/
+├── requirements.md
+├── design.md
+└── tasks.md
+```
+
+These files contain AI-generated SDLC artifacts.
+
+---
+
+# Running Tests
+
+Execute all tests:
 
 ```bash
 pytest
 ```
 
-Expected output:
+---
 
-```text
-2 passed
-```
+# GitHub Actions
+
+The repository includes a CI pipeline that automatically:
+
+1. Checks out source code
+2. Installs dependencies
+3. Runs Pytest
+4. Reports results
+
+Every push is automatically validated.
 
 ---
 
-## GitHub Actions
+# Development Workflow
 
-This repository includes a GitHub Actions workflow.
-
-The workflow automatically:
-
-1. Checks out the repository
-2. Installs Python
-3. Installs project dependencies
-4. Runs Pytest
-5. Reports test results
-
-This ensures code quality is automatically validated whenever code is pushed to GitHub.
-
----
-
-## Development Workflow
-
-The project follows a feature-branch strategy:
+Feature Branch Strategy:
 
 ```text
 main
 │
-├── feature/requirements
 ├── feature/requirements-agent
 ├── feature/design-agent
 ├── feature/task-agent
 ├── feature/code-agent
 ├── feature/tests
-└── feature/readme
+├── feature/project-cleanup
+└── feature/ollama-integration
 ```
 
-Each feature is developed independently and merged into the main branch after validation.
+Each feature is developed independently and merged after validation.
 
 ---
 
-## Future Enhancements
+# Future Enhancements
 
-### Phase 2
+## Phase 2
 
-* Real agent communication
-* Dynamic workflow execution
-* Improved orchestration logic
+* Streamlit Web Interface
+* Interactive Dashboard
+* AI Code Generation using LLMs
+* Multi-provider AI support
 
-### Phase 3
+## Phase 3
 
-* Ollama integration
-* Llama 3 support
-* Mistral support
-* Prompt engineering framework
+* OpenAI Integration
+* Google Gemini Integration
+* Ollama Local Models
+* LangChain Integration
 
-### Phase 4
+## Phase 4
 
-* Automatic requirements generation
-* Automatic design generation
-* Automatic code generation
-* Multi-agent collaboration
-
-### Phase 5
-
-* Web UI
-* Project dashboard
-* Export to Markdown/PDF
-* End-to-end SDLC automation
+* Export Documentation to PDF
+* Project Planning Dashboard
+* Multi-Agent Collaboration Framework
+* End-to-End SDLC Automation
 
 ---
 
-## Learning Outcomes
+# Learning Outcomes
 
 This project demonstrates:
 
 * Spec Driven Development
 * Software Development Life Cycle (SDLC)
-* Git branching strategy
-* Automated testing
-* Continuous Integration (CI)
-* GitHub Actions
-* Agent-based system design
-* Future AI/LLM integration patterns
+* Git Branching Strategy
+* GitHub Actions CI/CD
+* Automated Testing
+* Agent-Based System Design
+* AI Integration using APIs
+* Multi-Agent Architecture
+* Documentation Automation
 
 ---
 
-## Author
+# Author
 
 Akash Rams
 
-Built as a hands-on learning project to understand SDLC, Git, GitHub Actions, Agent Architecture, and AI-assisted software development.
+Built as a hands-on learning project to understand SDLC, Git, GitHub Actions, AI Agents, LLM Integration, and AI-assisted software development.
