@@ -10,12 +10,27 @@ sys.path.append(
 from src.agents.requirements_agent import RequirementsAgent
 
 
-def test_generate_requirements():
+def test_food_delivery_requirements():
 
     agent = RequirementsAgent()
 
     result = agent.generate_requirements(
-        "AI SDLC Assistant"
+        "Online Food Delivery App"
     )
 
-    assert len(result) > 0
+    assert "Users can browse restaurants" in result
+    assert "Users can place food orders" in result
+    assert "Users can track deliveries" in result
+
+
+def test_chat_application_requirements():
+
+    agent = RequirementsAgent()
+
+    result = agent.generate_requirements(
+        "Chat Application"
+    )
+
+    assert "Users can send messages" in result
+    assert "Users can create chat rooms" in result
+    assert "Users receive notifications" in result

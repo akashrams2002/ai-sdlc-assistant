@@ -1,7 +1,7 @@
-from agents.requirements_agent import RequirementsAgent
-from agents.design_agent import DesignAgent
-from agents.task_agent import TaskAgent
-from agents.code_agent import CodeAgent
+from src.agents.requirements_agent import RequirementsAgent
+from src.agents.design_agent import DesignAgent
+from src.agents.task_agent import TaskAgent
+from src.agents.code_agent import CodeAgent
 
 
 class Orchestrator:
