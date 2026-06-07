@@ -1,2 +1,24 @@
-__pycache__/
-*.pyc
+# Python
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Pytest
+
+.pytest_cache/
+
+# Virtual Environments
+
+venv/
+.venv/
+env/
+
+# VS Code
+
+.vscode/
+
+# OS Files
+
+.DS_Store
+Thumbs.db
