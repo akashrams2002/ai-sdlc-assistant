@@ -1,51 +1,32 @@
-import re
+from src.models.llm import LLM
 
 
 class CodeAgent:
     """
-    Generates starter code from tasks.
+    Generates starter code using AI.
     """
+
+    def __init__(self):
+        self.llm = LLM()
 
     def generate_code(self, tasks):
 
-        code = []
+        tasks_text = "\n".join(tasks)
 
-        for task in tasks:
+        prompt = f"""
+        Based on these software development tasks,
+        generate Python starter code.
 
-            if not task.startswith("Implement"):
-                continue
+        Tasks:
+        {tasks_text}
 
-            module_name = task.replace(
-                "Implement ",
-                ""
-            )
+        Generate simple Python classes and methods.
 
-            # Remove numbering like "1."
-            module_name = re.sub(
-                r"^\d+\.\s*",
-                "",
-                module_name
-            )
+        Return only code.
+        """
 
-            # Remove special characters
-            module_name = re.sub(
-                r"[^a-zA-Z0-9 ]",
-                "",
-                module_name
-            )
+        response = self.llm.generate(
+            prompt
+        )
 
-            # Convert to PascalCase
-            module_name = "".join(
-                word.capitalize()
-                for word in module_name.split()
-            )
-
-            class_code = (
-                f"class {module_name}:\n"
-                f"    def execute(self):\n"
-                f"        pass"
-            )
-
-            code.append(class_code)
-
-        return code
+        return [response]
